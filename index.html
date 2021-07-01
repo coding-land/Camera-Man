@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camera-Man</title>
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <script src="bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
+    integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Allan&family=Antonio&family=Rubik&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Antonio', sans-serif;
+      cursor: default;
+    }
+
+    .share {
+      position: absolute;
+      left: 5px;
+      transform: rotate(-90deg);
+      display: none;
+      top: 200px;
+    }
+
+    .lead {
+      width: 500px;
+    }
+
+    section.container {
+      min-width: 500px;
+      margin: 10% auto;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2em;
+      padding: 20px 0;
+    }
+
+    p {
+      font-size: .75em;
+      letter-spacing: 2px;
+      padding: 20px 0;
+    }
+
+    .button:hover {
+      cursor: pointer;
+      background-color: red;
+      color: white
+    }
+
+    .button {
+      background: transparent;
+      outline: none;
+      position: relative;
+      border: 1px solid rgb(255, 0, 0);
+      padding: 15px 50px;
+      overflow: hidden;
+      height: 50px;
+      width: 150px;
+    }
+
+
+    /*button:before (attr data-hover)*/
+    .button:hover:before {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+
+    .button:before {
+      content: attr(data-hover);
+      position: absolute;
+      top: 1.1em;
+      left: 0;
+      width: 100%;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: 800;
+      font-size: .8em;
+      opacity: 0;
+      transform: translate(-100%, 0);
+      transition: all .3s ease-in-out;
+    }
+
+    /*button div (button text before hover)*/
+    .button:hover div {
+      opacity: 0;
+      transform: translate(100%, 0)
+    }
+
+    button div {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: 800;
+      font-size: .8em;
+      transition: all .3s ease-in-out;
+    }
+
+    .link-1:hover {
+      color: red !important;
+    }
+
+    a {
+      cursor: pointer !important;
+    }
+
+    .link-2:hover {
+      color: red !important;
+    }
+
+    .link-3:hover {
+      color: red !important;
+    }
+
+    .link-4:hover {
+      color: red !important;
+    }
+
+    .link-5:hover {
+      color: red !important;
+    }
+
+    .active {
+      color: red !important;
+    }
+
+
+    .lead {
+      font-family: 'Roboto';
+      font-size: 15px;
+    }
+
+    .bg-1 {
+      background-image: url("Images/image1.jpg");
+      background-color: #cccccc;
+      height: 500px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      border-radius: 10px;
+    }
+
+    .image {
+      background-image: url("Images/image1.jpg");
+      background-color: #cccccc;
+      height: 300px;
+      background-position: center;
+      transition: all .3s ease-out;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    .footer-links {
+      color: white;
+      font-weight: bold;
+      ;
+    }
+
+    .image:hover {
+      background-image: url("Images/image1.jpg");
+      background-color: #cccccc;
+      height: 300px;
+      background-position: 100% 90%;
+      transition: all .3s ease-in-out;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+    }
+
+    .image-1 {
+      background-image: url("Images/image2.jpg");
+      background-color: #cccccc;
+      height: 300px;
+      transition: all .3s ease-out;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+    }
+
+    .image-1:hover {
+      background-image: url("Images/image2.jpg");
+      background-color: #cccccc;
+      height: 300px;
+      background-position: 100% 90%;
+      transition: all .3s ease-in-out;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+    }
+
+    .content-div {
+      float: right;
+      clear: right;
+    }
+
+    .bg-1:hover {
+      background-image: url("Images/image1.jpg");
+      background-color: #cccccc;
+      height: 500px;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      border-radius: 10px;
+    }
+
+    .bg-2 {
+      background-image: url("Images/image2.jpg");
+      background-color: #cccccc;
+      height: 500px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      border-radius: 10px;
+    }
+
+    .bg-3 {
+      background-image: url("Images/image1.jpg");
+      background-color: #cccccc;
+      height: 500px;
+      width: auto;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      border-radius: 10px;
+    }
+
+    .bg-4 {
+      background-image: url("Images/image2.jpg");
+      background-color: #cccccc;
+      height: 500px;
+      width: auto;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      border-radius: 10px;
+    }
+
+    .twitter {
+      color: red;
+    }
+
+    .twitter:hover {
+      color: cyan !important;
+    }
+
+    .facebook {
+      color: red;
+    }
+
+    .facebook:hover {
+      color: blue !important;
+    }
+
+    @media(max-width: 550px) {
+      .main-div-1 {
+        padding: 70px;
+        width: auto !important;
+        display: inline-block;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        height: 250px;
+      }
+
+      .main-div-3 {
+        padding: 70px;
+        display: inline-block;
+        width: auto !important;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        height: 250px;
+      }
+
+      .main-div-2 {
+        padding: 70px;
+        display: inline-block;
+        width: auto !important;
+        margin-left: 20px;
+        margin-right: 20px;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        height: 250px;
+      }
+    }
+
+    .main-div-1 {
+      padding: 70px;
+      width: 350px;
+      display: inline-block;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      height: 250px;
+    }
+
+    .main-div-2 {
+      padding: 70px;
+      display: inline-block;
+      width: 350px;
+      margin-left: 20px;
+      margin-right: 20px;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      height: 250px;
+    }
+
+    .div {
+      display: inline-block
+    }
+
+    .main-div-1:hover {
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      position: relative;
+      top: -10px;
+    }
+
+    .main-div-2:hover {
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      margin-top: -10px;
+      position: relative;
+      top: -10px;
+    }
+
+
+    .footer {
+      position: absolute;
+      left: 50%;
+      background-color: rgb(0, 14, 59);
+      ;
+      transform: translateX(-50%);
+      padding: 10px;
+      width: 100%;
+      margin: auto;
+      height: 500px;
+    }
+
+
+    .text-muted {
+      color: white !important;
+      font-family: Rubik;
+      text-decoration: none;
+    }
+
+    .text-muted-main {
+      color: white !important;
+      font-family: Rubik;
+      cursor: pointer !important;
+      text-decoration: none;
+    }
+
+    .fa {
+      cursor: pointer
+    }
+
+    .text-muted-main:hover {
+      color: red !important;
+    }
+
+
+    .main-div-3:hover {
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      margin-top: -10px;
+      position: relative;
+      top: -10px;
+    }
+
+    .main-div-3 {
+      padding: 70px;
+      display: inline-block;
+      width: 350px;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      height: 250px;
+    }
+
+    .insta {
+      color: red;
+    }
+
+    .insta:hover {
+      color: rgb(255, 0, 157) !important;
+    }
+
+    .bg-light {
+      padding: 20px;
+    }
+
+    @media(max-width: 970px) {
+      .bg-3 {
+        width: auto !important;
+      }
+
+      .bg-4 {
+        width: auto !important;
+      }
+
+      .lead {
+        width: auto !important;
+      }
+    }
+
+    @media(max-width: 800px) {
+      .main-div-1 {
+        margin-bottom: 0px !important;
+      }
+
+      .main-div-2 {
+        margin-bottom: 0px !important;
+        margin-top: 15px !important;
+      }
+    }
+
+    @media(max-width: 1120px) {
+      .main-div-3 {
+        display: none;
+      }
+    }
+
+    @media(max-width: 330px) {
+      .footer {
+        overflow-y: scroll;
+        overflow-x: hidden !important;
+      }
+    }
+
+    .container-fluid,
+    .container {
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+          fill="currentColor" class="bi bi-camera2 me-1" viewBox="0 0 16 16">
+          <path d="M5 8c0-1.657 2.343-3 4-3V4a4 4 0 0 0-4 4z" />
+          <path
+            d="M12.318 3h2.015C15.253 3 16 3.746 16 4.667v6.666c0 .92-.746 1.667-1.667 1.667h-2.015A5.97 5.97 0 0 1 9 14a5.972 5.972 0 0 1-3.318-1H1.667C.747 13 0 12.254 0 11.333V4.667C0 3.747.746 3 1.667 3H2a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1h.682A5.97 5.97 0 0 1 9 2c1.227 0 2.367.368 3.318 1zM2 4.5a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0zM14 8A5 5 0 1 0 4 8a5 5 0 0 0 10 0z" />
+        </svg>Camera Man</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item me-4">
+            <a class="nav-link active link-1" aria-current="page" href="#Home">Home</a>
+          </li>
+          <li class="nav-item me-4">
+            <a class="nav-link link-2" href="#About">About</a>
+          </li>
+
+          <li class="nav-item me-4">
+            <a class="nav-link link-3" href="#Services">Services</a>
+          </li>
+
+          <li class="nav-item me-4">
+            <a class="nav-link link-4" href="#Work">Work</a>
+          </li>
+
+          <li class="nav-item me-4">
+            <a class="nav-link link-5" href="#Blog">Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Home Section -->
+  <div class="container my-5" id="Home">
+    <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+      <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+        <h1 class="display-4 fw-bold lh-1">Camera Man Is Ready</h1>
+        <p class="lead text-secondary">Images for websites, nature, sports events, collages, universities, schools and
+          more images from all around the globe from professional photographers.</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+          <button data-hover="click me!" class="button">
+            <div>Join</div>
+        </div>
+      </div>
+      <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
+        <img class="rounded-lg-3" src="Images/image1.jpg" alt="" width="720">
+      </div>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <center>
+    <h3 style="margin-top: 4rem;">About</h3>
+  </center>
+  <center>
+    <hr class="featurette-divider" style="width: 100px;color: red;border: 2px solid red;opacity: 1;" ;>
+  </center>
+
+  <div class="container mb-3 d-flex align-items-center justify-content-center" id="About">
+
+    <div class="row featurette">
+      <div class="col-md-6 order-md-2  my-auto">
+        <div data-aos="fade-left">
+          <h2 class="featurette-heading display-4">Something<span style="color: red"> About</span> Us and our team.</h2>
+          <p class="lead text-secondary">We are the camera mans we take professional images and train new students to
+            become a new and a great photographers by our professionals.</p>
+          <button data-hover="Yes" class="button">
+            <div>Login</div>
+        </div>
+      </div>
+      <div class="col-md-6 order-md-1">
+        <div data-aos="fade-right">
+          <img src="Images/image2.jpg" style="height: 500px;width: 400px;"
+            class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500"
+            xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
+            preserveAspectRatio="xMidYMid slice" focusable="false">
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Services -->
+  </div><!-- /.container -->
+  <div class="container-fluid main-container" style="background-color: #EFEFEF;padding: 10px;" id="Services">
+    <center>
+      <h3 style="margin-top: 4rem;text-align: center">Services</h3>
+    </center>
+    <center>
+      <hr class="featurette-divider" style="width: 100px;color: red;border: 2px solid red;opacity: 1;" ;>
+    </center>
+    <center>
+      <div data-aos="fade-down" class="div">
+        <div class="main-div-1"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+            style="margin-top: -10px;" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+            <path fill-rule="evenodd"
+              d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+          </svg>
+          <h3 style="display: inline-block" class="ms-3">Portfolio</h3>
+          <p class="text-secondary" style="font-family: 'Roboto">We take portfolio and celebrities' images.</p>
+        </div>
+      </div>
+      <div data-aos="fade-down" class="div">
+        <div class="main-div-2">
+          <i class="fas fa-hamburger" style="margin-top: -10px;font-size: 25px"></i>
+          <h3 style="display: inline-block" class="ms-3">Food</h3>
+          <p class="text-secondary" style="font-family: 'Roboto">We take street and healthy food images.</p>
+        </div>
+      </div>
+      <div data-aos="fade-down" class="div">
+        <div class="main-div-3">
+          <i class="fas fa-university" style="margin-top: -10px;font-size: 25px"></i>
+          <h3 style="display: inline-block" class="ms-3">University</h3>
+          <p class="text-secondary" style="font-family: 'Roboto">We take images of new universities.</p>
+        </div>
+      </div>
+    </center>
+
+    <center>
+      <div data-aos="fade-down" class="div">
+        <div class="main-div-1 my-5">
+          <i class="fas fa-ring" style="margin-top: -10px;font-size: 25px"></i>
+          <h3 style="display: inline-block" class="ms-3">Marriage</h3>
+          <p class="text-secondary" style="font-family: 'Roboto">We take marriage and aniversary images.</p>
+        </div>
+      </div>
+      <div data-aos="fade-down" class="div">
+        <div class="main-div-2 my-5">
+          <i class="fas fa-water" style="margin-top: -10px;font-size: 25px"></i>
+          <h3 style="display: inline-block" class="ms-3">Nature</h3>
+          <p class="text-secondary" style="font-family: 'Roboto'">We take nature and animals images.</p>
+        </div>
+      </div>
+      <div data-aos="fade-down" class="div">
+        <div class="main-div-3 my-5">
+          <i class="fas fa-biking" style="margin-top: -10px;font-size: 25px"></i>
+          <h3 style="display: inline-block" class="ms-3">Easy</h3>
+          <p class="text-secondary" style="font-family: 'Roboto">We take sport events and track images</p>
+        </div>
+      </div>
+    </center>
+  </div>
+
+
+  <!-- Work Section -->
+  <center>
+    <h3 style="margin-top: 4rem;text-align: center">Our Work</h3>
+  </center>
+  <center>
+    <hr class="featurette-divider" style="width: 100px;color: red;border: 2px solid red;opacity: 1;" ;>
+  </center>
+  <div class="container-fluid" id="Work">
+    <center>
+      <div class="row">
+        <div class="col-md-8 col-sm-12">
+          <div data-aos="fade-in">
+            <div class="bg-1"></div>
+            <div class="bg-2 my-4"></div>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-12">
+          <div data-aos="fade-left">
+            <div class="bg-3"></div>
+            <div class="bg-4 my-4"></div>
+          </div>
+        </div>
+      </div>
+    </center>
+  </div>
+
+  <!-- Blog Section -->
+  <center>
+    <h3 style="margin-top: 4rem;text-align: center">Blog</h3>
+  </center>
+  <center>
+    <hr class="featurette-divider" style="width: 100px;color: red;border: 2px solid red;opacity: 1;" ;>
+  </center>
+  <div class="container-fluid" id="Blog">
+    <div data-aos="fade-in">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="blog-div">
+            <div class="image"></div>
+            <h5 class="my-3">Home is the great place in hindi</h5>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              style="display: inline-block" class="bi bi-person-circle" color="ghrey" viewBox="0 0 16 16">
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+              <path fill-rule="evenodd"
+                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+            </svg>
+            <h6 style="display: inline-block;font-family: rubik;" class="ms-2 text-secondary">Admin</h6>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class=" ms-2 bi bi-calendar2" viewBox="0 0 16 16">
+              <path
+                d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z" />
+              <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z" />
+            </svg>
+            <h6 style="display: inline-block;font-family: rubik;" class="ms-2 text-secondary">12-6-2021</h6>
+            <h6 class="my-2 text-secondary" style="font-family: rubik">Lorem ipsum dolor, sit amet consectetur
+              adipisicing
+              elit. Recusandae molestias enim deleniti expedita accusamus. Praesentium voluptate, totam, numquam
+              deleniti
+              earum ducimus iure sit eius corrupti quas nemo quasi impedit assumenda!</h6>
+          </div>
+        </div>
+        <div class="col-md-6">
+
+          <div class="blog-div">
+            <div class="image-1"></div>
+            <h5 class="my-3">Home is the great place in hindi</h5>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              style="display: inline-block" class="bi bi-person-circle" color="ghrey" viewBox="0 0 16 16">
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+              <path fill-rule="evenodd"
+                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+            </svg>
+            <h6 style="display: inline-block;font-family: rubik;" class="ms-2 text-secondary">Admin</h6>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class=" ms-2 bi bi-calendar2" viewBox="0 0 16 16">
+              <path
+                d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z" />
+              <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z" />
+            </svg>
+            <h6 style="display: inline-block;font-family: rubik;" class="ms-2 text-secondary">12-6-2021</h6>
+            <h6 class="my-2 text-secondary" style="font-family: rubik">Lorem ipsum dolor, sit amet consectetur
+              adipisicing
+              elit. Recusandae molestias enim deleniti expedita accusamus. Praesentium voluptate, totam, numquam
+              deleniti
+              earum ducimus iure sit eius corrupti quas nemo quasi impedit assumenda!</h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="container-fluid footer" style="margin-top: 8rem;">
+    <footer class="pt-4 my-md-5 pt-md-5 border-to">
+      <div class="row">
+        <div class="col-12 col-md">
+          <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" color="white"
+            class="mb-2 bi bi-camera2" viewBox="0 0 16 16">
+            <path d="M5 8c0-1.657 2.343-3 4-3V4a4 4 0 0 0-4 4z" />
+            <path
+              d="M12.318 3h2.015C15.253 3 16 3.746 16 4.667v6.666c0 .92-.746 1.667-1.667 1.667h-2.015A5.97 5.97 0 0 1 9 14a5.972 5.972 0 0 1-3.318-1H1.667C.747 13 0 12.254 0 11.333V4.667C0 3.747.746 3 1.667 3H2a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1h.682A5.97 5.97 0 0 1 9 2c1.227 0 2.367.368 3.318 1zM2 4.5a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0zM14 8A5 5 0 1 0 4 8a5 5 0 0 0 10 0z" />
+          </svg>
+          <small class="d-block mb-3 text-muted">&copy; 2021-2022</small>
+        </div>
+        <div class="col-6 col-md">
+          <h5 class="footer-links">Features</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="#">Easy Support</a></li>
+            <li><a class="text-muted" href="#">7 Day Free Trail</a></li>
+            <li><a class="text-muted" href="#">Experienced Photographers</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5 class="footer-links">Equipments</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="#Home"></a></li>
+            <li><a class="text-muted" href="#Home">Camera</a></li>
+            <li><a class="text-muted" href="#Home">DSLR</a></li>
+            <li><a class="text-muted" href="#Home">Other Equipments</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5 class="footer-links">About</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="#">Camera Man is a site where we train new photographers to take amazing
+                pictures.</a></li>
+            <li><a class="text-muted" href="#About">Know More</a></li>
+            <li><a class="text-muted" href="index1.html">Documentation for template</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5 class="footer-links">Social Links</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-muted" href="#">We always want all of our users to become a good photographer and they
+                can feel the nature.</a></li>
+            <li style="display: inline-block;margin-left: 0px;"><a class="text-muted-main"
+                href="https://instagram.com/"><i class="fa fa-instagram"></i></a></li>
+            <li style="display: inline-block;margin-left: 10px;"><a class="text-muted-main"
+                href="https://facebook.com/"><i class="fa fa-facebook"></i></a></li>
+            <li style="display: inline-block;margin-left: 10px;"><a class="text-muted-main"
+                href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+            <li style="display: inline-block;margin-left: 10px;"><a class="text-muted-main" href="https://quora.com/"><i
+                  class="fa fa-quora"></i></a></li>
+            <center>
+              <hr
+                style="width: 80vw;display: block!important;display: block;position: absolute;left: 50%;transform: translateX(-50%);margin-top: 25vh;color: white">
+            </center>
+            <center>
+              <h5
+                style="display: block!important;display: block;position: absolute;left: 50%;transform: translateX(-50%);margin-top: 30vh;color: white;font-family: rubik;">
+                Made With <i class="fa fa-heart" style="color: red"></i>&nbsp HTML, CSS, JS, jQuery And Bootstrap
+              </h5>
+            </center>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </div>
+  </section>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
+</body>
+
+</html>
