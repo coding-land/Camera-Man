@@ -1,0 +1,434 @@
+@import url('https://fonts.googleapis.com/css2?family=Allan&family=Antonio&family=Rubik&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Antonio', sans-serif;
+  cursor: default;
+}
+
+.share {
+  position: absolute;
+  left: 5px;
+  transform: rotate(-90deg);
+  display: none;
+  top: 200px;
+}
+
+.lead {
+  width: 500px;
+}
+
+section.container {
+    min-width: 500px;
+    margin: 10% auto;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 2em;
+    padding: 20px 0;
+  }
+  
+  p {
+    font-size: .75em;
+    letter-spacing: 2px;
+    padding: 20px 0;
+  }
+  
+  .button:hover {
+    cursor: pointer;
+    background-color: red;
+    color: white
+  }
+  
+  .button {
+    background: transparent;
+    outline: none;
+    position: relative;
+    border: 1px solid rgb(255, 0, 0);
+    padding: 15px 50px;
+    overflow: hidden;
+    height: 50px;
+    width: 150px;
+  }
+  
+  
+  /*button:before (attr data-hover)*/
+  .button:hover:before {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  
+  .button:before {
+    content: attr(data-hover);
+    position: absolute;
+    top: 1.1em;
+    left: 0;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 800;
+    font-size: .8em;
+    opacity: 0;
+    transform: translate(-100%, 0);
+    transition: all .3s ease-in-out;
+  }
+  
+  /*button div (button text before hover)*/
+  .button:hover div {
+    opacity: 0;
+    transform: translate(100%, 0)
+  }
+  
+  button div {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 800;
+    font-size: .8em;
+    transition: all .3s ease-in-out;
+  }
+  
+  .link-1:hover {
+    color: red !important;
+  }
+  
+  a {
+    cursor: pointer !important;
+  }
+  
+  .link-2:hover {
+    color: red !important;
+  }
+  
+  .link-3:hover {
+    color: red !important;
+  }
+  
+  .link-4:hover {
+    color: red !important;
+  }
+  
+  .link-5:hover {
+    color: red !important;
+  }
+  
+  .active {
+    color: red !important;
+  }
+  
+  
+  .lead {
+    font-family: 'Roboto';
+    font-size: 15px;
+  }
+  
+  .bg-1 {
+    background-image: url("Images/image1.jpg");
+    background-color: #cccccc;
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    border-radius: 10px;
+  }
+  
+  .image {
+    background-image: url("Images/image8.jpg");
+    background-color: #cccccc;
+    height: 300px;
+    background-position: center;
+    transition: all .3s ease-out;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+  
+  body {
+    overflow-x: hidden;
+  }
+  
+  .footer-links {
+    color: white;
+    font-weight: bold;
+    ;
+  }
+  
+  .image:hover {
+    background-image: url("Images/image8.jpg");
+    background-color: #cccccc;
+    height: 300px;
+    background-position: 100% 90%;
+    transition: all .3s ease-in-out;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+  
+  .image-1 {
+    background-image: url("Images/image2.jpg");
+    background-color: #cccccc;
+    height: 300px;
+    transition: all .3s ease-out;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+  
+  .image-1:hover {
+    background-image: url("Images/image2.jpg");
+    background-color: #cccccc;
+    height: 300px;
+    background-position: 100% 90%;
+    transition: all .3s ease-in-out;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+  
+  .content-div {
+    float: right;
+    clear: right;
+  }
+  
+  .bg-1:hover {
+    background-image: url("Images/image1.jpg");
+    background-color: #cccccc;
+    height: 500px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    border-radius: 10px;
+  }
+  
+  .bg-2 {
+    background-image: url("Images/image2.jpg");
+    background-color: #cccccc;
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    border-radius: 10px;
+  }
+  
+  .bg-3 {
+    background-image: url("Images/image1.jpg");
+    background-color: #cccccc;
+    height: 500px;
+    width: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    border-radius: 10px;
+  }
+  
+  .bg-4 {
+    background-image: url("Images/image2.jpg");
+    background-color: #cccccc;
+    height: 500px;
+    width: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    border-radius: 10px;
+  }
+  
+  .twitter {
+    color: red;
+  }
+  
+  .twitter:hover {
+    color: cyan !important;
+  }
+  
+  .facebook {
+    color: red;
+  }
+  
+  .facebook:hover {
+    color: blue !important;
+  }
+  
+  @media(max-width: 550px) {
+    .main-div-1 {
+      padding: 70px;
+      width: 100% !important;
+      display: inline-block;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      height: 250px;
+    }
+    .main-div-2 {
+  padding: 70px;
+  display: inline-block;
+  width: 350px;
+  margin-left: 0px!important;
+  margin-right: 20px;
+  box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+  height: 250px;
+  }
+    .main-div-3 {
+      padding: 70px;
+      display: inline-block;
+      width: 100% !important;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      height: 250px;
+    }
+  
+    .main-div-2 {
+      padding: 70px;
+      display: inline-block;
+      width: 100% !important;
+      margin-left: 20px;
+      margin-right: 20px;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      height: 250px;
+    }
+  }
+  
+  .main-div-1 {
+    padding: 70px;
+    width: 350px;
+    display: inline-block;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    height: 250px;
+  }
+  
+  .main-div-2 {
+    padding: 70px;
+    display: inline-block;
+    width: 350px;
+    margin-left: 20px;
+    margin-right: 20px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    height: 250px;
+  }
+  
+  .div {
+    display: inline-block
+  }
+  
+  .main-div-1:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    position: relative;
+    top: -10px;
+  }
+  
+  .main-div-2:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-top: -10px;
+    position: relative;
+    top: -10px;
+  }
+  
+  
+  .footer {
+    position: absolute;
+    left: 50%;
+    background-color: rgb(0, 14, 59);
+    ;
+    transform: translateX(-50%);
+    padding: 10px;
+    width: 100%;
+    margin: auto;
+    height: 500px;
+  }
+  
+  
+  .text-muted {
+    color: white !important;
+    font-family: Rubik;
+    text-decoration: none;
+  }
+  
+  .text-muted-main {
+    color: white !important;
+    font-family: Rubik;
+    cursor: pointer !important;
+    text-decoration: none;
+  }
+  
+  .fa {
+    cursor: pointer
+  }
+  
+  .text-muted-main:hover {
+    color: red !important;
+  }
+  
+  
+  .main-div-3:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-top: -10px;
+    position: relative;
+    top: -10px;
+  }
+  
+  .main-div-3 {
+    padding: 70px;
+    display: inline-block;
+    width: 350px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    height: 250px;
+  }
+  
+  .insta {
+    color: red;
+  }
+  
+  .insta:hover {
+    color: rgb(255, 0, 157) !important;
+  }
+  
+  .bg-light {
+    padding: 20px;
+  }
+  
+  @media(max-width: 970px) {
+    .bg-3 {
+      width: auto !important;
+    }
+  
+    .bg-4 {
+      width: auto !important;
+    }
+  
+    .lead {
+      width: auto !important;
+    }
+  }
+  
+  @media(max-width: 800px) {
+    .main-div-1 {
+      margin-bottom: 0px !important;
+    }
+  
+    .main-div-2 {
+      margin-bottom: 0px !important;
+      margin-top: 15px !important;
+    }
+  }
+  
+  @media(max-width: 1120px) {
+    .main-div-3 {
+      display: none;
+    }
+  }
+  
+  @media(max-width: 330px) {
+    .footer {
+      overflow-y: scroll;
+      overflow-x: hidden !important;
+    }
+  }
+  
+  .container-fluid,
+  .container {
+    overflow: hidden;
+  }
